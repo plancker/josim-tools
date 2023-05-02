@@ -1,5 +1,4 @@
 """ Module that contains interface code with JoSIM """
-
 from typing import List, Optional
 from numpy import interp
 from sys import exit
@@ -10,7 +9,7 @@ import attr
 from pyjosim import Input, AnalysisType, InputType, Matrix, Output, Simulation, ParameterName, Trace, Parameter
 
 
-class CircuitSimulatorOuput:
+class CircuitSimulatorOutput:
     """ Property class for output of Simulation objects """
 
     traces_: List[Trace]
@@ -155,7 +154,7 @@ class CircuitSimulator:
         # Return output
         return output
 
-    def simulate(self, parameter_values: List[float]) -> CircuitSimulatorOuput:
+    def simulate(self, parameter_values: List[float]) -> CircuitSimulatorOutput:
         """ Simulate and return list of traces """
 
         output = self._raw_simulate(parameter_values)
@@ -168,7 +167,7 @@ class CircuitSimulator:
         if self.parameter_names_ is None:
             for trace in traces:
                 output_traces.append(trace)
-            return CircuitSimulatorOuput(time_steps, output_traces)
+            return CircuitSimulatorOutput(time_steps, output_traces)
 
         for plot_parameter in self.plot_parameters_:
             trace_name = plot_parameter.to_trace_name()
@@ -191,7 +190,7 @@ class CircuitSimulator:
         for trace, parameter in zip(output_traces, self.plot_parameters_):
             assert trace.name == parameter.to_trace_name()
 
-        return CircuitSimulatorOuput(time_steps, output_traces)
+        return CircuitSimulatorOutput(time_steps, output_traces)
 
     def change_traces(self, plot_parameters: List[PlotParameter]) -> None:
         """ Modify the traces that are output by simulate """
