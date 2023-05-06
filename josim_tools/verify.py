@@ -6,7 +6,7 @@ import numpy as np
 import attr
 
 from .formats import SpecFile
-from .simulation import CircuitSimulator, CircuitSimulatorOuput, PlotParameter
+from .simulation import CircuitSimulator, CircuitSimulatorOutput, PlotParameter
 from .configuration import VerifyConfiguration
 
 
@@ -47,7 +47,7 @@ class Verifier:
         plot_parameters = [PlotParameter(name) for name in names]
         self.simulator_.change_traces(plot_parameters)
 
-    def _simulate(self, params: Dict[str, float]) -> CircuitSimulatorOuput:
+    def _simulate(self, params: Dict[str, float]) -> CircuitSimulatorOutput:
         parameters: List[str] = []
         values: List[float] = []
 

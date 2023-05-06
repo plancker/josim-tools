@@ -1,0 +1,24 @@
+mode = "margin"
+
+[verify]
+method = "spec_file"
+circuit = "sfqlib/josim_tools/examples/data/test_splitt_changed_sym.cir"
+file = "sfqlib/josim_tools/examples/data/test_splitt_changed_sym.sp"
+threshold = 0.05
+
+[parameters]
+B0 = {"nominal" = 1.0}
+Itotal = {"nominal" = 1.0}
+Btotal = {"nominal" = 1.0}
+Ltotal = {"nominal" = 1.0}
+B01rx2_unscaled = {"nominal" = 1.0}
+B01tx1_unscaled = {"nominal" = 2.0}
+B1_unscaled = {"nominal" = 3.25}
+B2_unscaled = {"nominal" = 2.5}
+
+[margin]
+max_search = 1.9
+min_search = 0.1
+scan_steps = 4
+binary_search_steps = 3
+
